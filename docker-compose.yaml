@@ -1,0 +1,7 @@
+services:
+  app:
+    build: .
+    volumes:
+      - ./:/var/www
+    ports:
+      - 9501:9501

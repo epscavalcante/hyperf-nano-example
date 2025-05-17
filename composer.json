@@ -1,0 +1,24 @@
+{
+  "name": "epscavalcante/hyperf-nano-example",
+  "description": "HyperF Nano example",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Eduardo Cavalcante",
+      "email": "eduardo.ps.cavalcante@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {},
+  "autoload-dev": {},
+  "require": {
+    "hyperf/nano": "^2.0.1"
+  },
+  "config": {},
+  "scripts": {},
+  "require-dev": {
+    "hyperf/watcher": "3.2.x-dev"
+  }
+}
