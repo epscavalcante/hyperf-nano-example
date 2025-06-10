@@ -8,4 +8,4 @@ RUN composer install --no-interaction
 
 EXPOSE 9051
 
-ENTRYPOINT ["php", "hyperf.php", "start"]
+ENTRYPOINT ["php", "index.php", "start"]
