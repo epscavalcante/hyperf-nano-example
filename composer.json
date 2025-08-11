@@ -17,8 +17,5 @@
     "hyperf/nano": "^2.0.1"
   },
   "config": {},
-  "scripts": {},
-  "require-dev": {
-    "hyperf/watcher": "3.2.x-dev"
-  }
+  "scripts": {}
 }
