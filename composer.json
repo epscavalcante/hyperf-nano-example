@@ -16,6 +16,19 @@
   "require": {
     "hyperf/nano": "^2.0.1"
   },
-  "config": {},
-  "scripts": {}
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }},
+  "scripts": {
+    "start": [
+      "Composer\\Config::disableProcessTimeout",
+      "php index.php start"
+    ],
+    "test": "./vendor/bin/pest --colors=always",
+  },
+  "require-dev": {
+    "pestphp/pest": "^2.36",
+    "hyperf/testing": "^3.1"
+  }
 }
