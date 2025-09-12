@@ -1,25 +1,20 @@
-FROM hyperf/hyperf:8.1-alpine-v3.16-swoole
+FROM hyperf/hyperf:8.4-alpine-v3.21-swoole-slim
 
-ARG user=application
-ARG uid=1000
+#ARG user=application
+#ARG uid=1000
 
-# Cria usuário customizado
-RUN adduser -D -u $uid $user \
-    && addgroup $user www-data \
-    && mkdir -p /home/$user/.composer \
-    && chown -R $user:$user /home/$user
-
-# Instala o Composer
-RUN wget https://getcomposer.org/composer-stable.phar -O /usr/local/bin/composer \
-    && chmod +x /usr/local/bin/composer
+#RUN adduser -D -u $uid $user \
+#    && addgroup $user www-data \
+#    && mkdir -p /home/$user/.composer \
+#    && chown -R $user:$user /home/$user
 
 WORKDIR /var/www
 
 COPY . /var/www
 
-RUN chown -R $user:$user /var/www
+# RUN chown -R $user:$user /var/www
 
-USER $user
+# USER $user
 
 EXPOSE 9501
 
