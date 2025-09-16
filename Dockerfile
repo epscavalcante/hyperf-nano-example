@@ -16,6 +16,8 @@ COPY . /var/www
 
 # USER $user
 
+RUN git config --global --add safe.directory /var/www
+
 EXPOSE 9501
 
 CMD [ "tail", "-f", "/dev/null" ]

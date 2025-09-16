@@ -4,7 +4,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Hyperf\Nano\Factory\AppFactory;
 
-$app = AppFactory::create('0.0.0.0', 9501);
+use function Hyperf\Support\env;
+
+$app = AppFactory::create();
 
 $app->get('/', function () {
     return [
@@ -13,7 +15,7 @@ $app->get('/', function () {
 });
 
 $app->get('/hello', function () {
-    $user = $this->request->input('user', 'nano');
+    $user = env('APP_NAME');
     $method = $this->request->getMethod();
 
     return [

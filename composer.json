@@ -14,7 +14,8 @@
   "autoload": {},
   "autoload-dev": {},
   "require": {
-    "hyperf/nano": "^2.0.1"
+    "hyperf/nano": "^2.0.1",
+    "hyperf/devtool": "^3.2@alpha"
   },
   "config": {},
   "scripts": {}
