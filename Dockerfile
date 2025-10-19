@@ -1,23 +1,31 @@
+FROM hyperf/hyperf:8.4-alpine-v3.21-swoole-slim AS build
+
+# Dependências temporárias para instalar vendors
+RUN apk add --no-cache git zip unzip
+
+WORKDIR /app
+
+COPY composer.json composer.lock ./
+
+# Instalar apenas pacotes de produção
+RUN composer install --no-dev --optimize-autoloader --classmap-authoritative --no-scripts --no-progress --prefer-dist
+
+# Copiar código da aplicação
+COPY . .
+
 FROM hyperf/hyperf:8.4-alpine-v3.21-swoole-slim
 
-#ARG user=application
-#ARG uid=1000
+WORKDIR /app
 
-#RUN adduser -D -u $uid $user \
-#    && addgroup $user www-data \
-#    && mkdir -p /home/$user/.composer \
-#    && chown -R $user:$user /home/$user
+# Copiar vendor e app já prontos
+COPY --from=build /app /app
 
-WORKDIR /var/www
-
-COPY . /var/www
-
-# RUN chown -R $user:$user /var/www
-
-# USER $user
-
-RUN git config --global --add safe.directory /var/www
+# Variáveis de runtime mais importantes
+ENV APP_ENV=prod \
+    SCAN_CACHEABLE=true \
+    SWOOLE_HOOK_FLAGS=0
 
 EXPOSE 9501
 
-CMD [ "tail", "-f", "/dev/null" ]
+# Start da aplicação Hyperf Nano
+CMD ["php", "hyperf.php", "start"]
