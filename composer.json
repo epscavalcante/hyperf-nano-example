@@ -33,10 +33,12 @@
   },
   "scripts": {
     "test": "php vendor/bin/pest",
-    "serve": "php hyperf.php start"
+    "serve": "php hyperf.php start",
+    "analise": "php vendor/bin/phpstan analyse src --level=max"
   },
   "require-dev": {
     "friendsofhyperf/pest-plugin-hyperf": "3.2.x-dev",
-    "hyperf/testing": "^3.2@alpha"
+    "hyperf/testing": "^3.2@alpha",
+    "phpstan/phpstan": "^2.1"
   }
 }
