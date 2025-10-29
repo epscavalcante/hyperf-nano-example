@@ -12,9 +12,13 @@ WORKDIR /var/www
 
 COPY . /var/www
 
-# RUN chown -R $user:$user /var/www
+# Instala a extensão pcov via repositório do Alpine
+RUN apk add --no-cache php84-pecl-pcov
 
-# USER $user
+# Configurações de cobertura
+RUN echo "pcov.enabled=1" > /etc/php84/conf.d/50_pcov.ini \
+    && echo "pcov.directory=/var/www" >> /etc/php84/conf.d/50_pcov.ini \
+    && echo "pcov.exclude=\"~vendor~\"" >> /etc/php84/conf.d/50_pcov.ini
 
 RUN git config --global --add safe.directory /var/www
 
