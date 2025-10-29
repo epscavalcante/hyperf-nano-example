@@ -11,12 +11,32 @@
   ],
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "autoload": {},
-  "autoload-dev": {},
+  "autoload": {
+    "psr-4": {
+      "Src\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
   "require": {
     "hyperf/nano": "^2.0.1",
-    "hyperf/devtool": "^3.2@alpha"
+    "hyperf/devtool": "^3.2@alpha",
+    "hyperf/db-connection": "^3.2@alpha"
   },
-  "config": {},
-  "scripts": {}
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "scripts": {
+    "test": "php vendor/bin/pest",
+    "serve": "php hyperf.php start"
+  },
+  "require-dev": {
+    "friendsofhyperf/pest-plugin-hyperf": "3.2.x-dev",
+    "hyperf/testing": "^3.2@alpha"
+  }
 }
